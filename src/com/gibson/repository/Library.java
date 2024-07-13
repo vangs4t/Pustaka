@@ -1,6 +1,8 @@
 package com.gibson.repository;
 
+import com.gibson.entity.Admin;
 import com.gibson.entity.Book;
+import com.gibson.entity.User;
 import com.gibson.error.NotNull;
 import com.gibson.util.NotNullValidation;
 
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 
 public class Library {
 
+    private ArrayList<User> userData = new ArrayList<>(); // membuat data yang menampung data user
     private ArrayList<Book> arrayList = new ArrayList<>(); // field ini berfungsi untuk menyimpan buku yang akan di tambahkan
     private Book book;
 
@@ -28,6 +31,37 @@ public class Library {
 
     public void setArrayList(ArrayList<Book> arrayList) {
         this.arrayList = arrayList;
+    }
+
+    public ArrayList<User> getUserData() {
+        return userData;
+    }
+
+    public void setUserData(ArrayList<User> userData) {
+        this.userData = userData;
+    }
+
+    /**
+     * Membuat method pendaftaran user dengan memasukan nama dan segala macem
+     * Untuk apa memerlukan input nama dan email??
+     * agar nanti kita akan menambahkan fungsi forgot password
+     * dan challenge nya dengan memasukan nama dan email
+     */
+    public void addUser(String name, String email, String username, String password){
+        userData.add(new User(username,password,name,email));
+    }
+    /**
+     * dan disini kita akan menambahakn kan fitur login
+     * jika input user sama dengan data yang ada di dalam arraylist userData maka userLogin
+     */
+
+    public void userLogin(String username, String password){
+        for (int i = 0; i < userData.size(); i++) {
+            if (username.equals(userData.get(i).getUserName()) && password.equals(userData.get(i).getPassword())){
+                // membuat kondisi jika input username dan password sama maka kamu bisa login
+                System.out.println("Selamat datang " + userData.get(i).getNama());
+            }
+        }
     }
 
     /**
