@@ -2,7 +2,10 @@ package com.gibson.system;
 
 public interface SystemLibrary {
 
-    String searchByTitle(String title);
+    void searchByTitle(String title);
 
+    void userLogin(String userName, String password);
+
+    void notNullChecker();
 
 }

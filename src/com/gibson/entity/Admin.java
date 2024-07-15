@@ -1,8 +1,11 @@
 package com.gibson.entity;
 
-public class Admin {
+import com.gibson.anotation.IsBlankAnotation;
 
+public class Admin {
+    @IsBlankAnotation
     private String userName;
+    @IsBlankAnotation
     private String password;
 
     public Admin() {

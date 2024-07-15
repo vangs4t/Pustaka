@@ -1,6 +1,8 @@
 package com.gibson.util;
 
 
+import java.util.Base64;
+
 public class DataEncryption {
 
     private String eskripsi;
@@ -19,20 +21,8 @@ public class DataEncryption {
      * @return
      */
     public static String encryptionString(String input) {
-        String eskripsi = "@SVAxb!#43"; // kata kunci untuk mengensrkipsi input
-        StringBuilder result = new StringBuilder(input);
-        int eskripsiIndex = 0;
-
-        for (int i = 1; i < result.length() && eskripsiIndex < eskripsi.length(); i += 3) { // 3 langkah setiap penambahan symbol dan kondisi agar index tidak melebihi kapasitas panjang ensripsi
-
-                result.insert(i, eskripsi.charAt(eskripsiIndex)); // menambahkan enskripsi
-                eskripsiIndex++; // tingkatkan index setiap enskripsi disisipkan
-
-        }
-
-        return result.reverse().toString(); // reverse agar bjorka susah masuk ke sistem
+        return Base64.getEncoder().encodeToString(input.getBytes());
     }
-
 
 
     /**
@@ -42,18 +32,7 @@ public class DataEncryption {
      */
 
     public static String decryptionString(String input) {
-        String eskripsi = "@SVAxb!#43"; // buat kunci enskripsi
-        StringBuilder result = new StringBuilder(input);
-        result.reverse(); // jangan lupa reverse
-
-        for (char ch : eskripsi.toCharArray()) { // for each untuk mendapatkan masing2 symbol dari enskripsi
-            int index;
-            while ((index = result.indexOf(String.valueOf(ch))) != -1) { // buat kondisi untuk mencari index di dalam input
-                result.deleteCharAt(index); // penghapusan index yang sesuai dengan enkripsi dan input aslinya tidak akan terhapus
-            }
-        }
-
-        return result.toString();
+        return new String(Base64.getDecoder().decode(input.getBytes()));
     }
 
 

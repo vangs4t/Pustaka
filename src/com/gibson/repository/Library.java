@@ -4,6 +4,7 @@ import com.gibson.entity.Admin;
 import com.gibson.entity.Book;
 import com.gibson.entity.User;
 import com.gibson.error.NotNull;
+import com.gibson.util.DataEncryption;
 import com.gibson.util.NotNullValidation;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class Library {
      * dan challenge nya dengan memasukan nama dan email
      */
     public void addUser(String name, String email, String username, String password){
-        userData.add(new User(username,password,name,email));
+        userData.add(new User(username, DataEncryption.encryptionString(password),name,email));
     }
     /**
      * dan disini kita akan menambahakn kan fitur login
@@ -57,7 +58,8 @@ public class Library {
 
     public void userLogin(String username, String password){
         for (int i = 0; i < userData.size(); i++) {
-            if (username.equals(userData.get(i).getUserName()) && password.equals(userData.get(i).getPassword())){
+            if (username.equals(userData.get(i).getUserName()) && password.equals(DataEncryption.decryptionString(userData.get(i).getPassword()))){
+                // ambil password yang ada di dalam data dan decrytpe terlebih dahulu lalu cocokan dengan password yang dimasukan user
                 // membuat kondisi jika input username dan password sama maka kamu bisa login
                 System.out.println("Selamat datang " + userData.get(i).getNama());
             }

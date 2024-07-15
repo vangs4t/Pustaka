@@ -1,7 +1,11 @@
 package com.gibson.entity;
 
+import com.gibson.anotation.IsBlankAnotation;
+
 public class User extends Admin{
+    @IsBlankAnotation
     private String nama;
+    @IsBlankAnotation
     private String email;
 
     public User(String userName, String password) {
