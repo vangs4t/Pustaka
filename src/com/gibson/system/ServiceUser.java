@@ -15,13 +15,13 @@ public interface ServiceUser {
      * Jika user salah memasukan password selama 3x berturut2 maka
      * akan ada challenge jika user bukan bot atau robot
      */
-    String loginAttempt();
+//    String loginAttempt();
 
     /**
      * Jika user sudah selesai login maka akan diarahkan ke main menu
      * aplikasi perpustakaan
      */
-    void mainMenus();
+//    void mainMenus();
 }
 
 

@@ -48,13 +48,4 @@ public class ServiceUserImpl implements ServiceUser{
         }
     }
 
-    @Override
-    public String loginAttempt() {
-        return null;
-    }
-
-    @Override
-    public void mainMenus() {
-
-    }
 }
