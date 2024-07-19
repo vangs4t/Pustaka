@@ -7,7 +7,6 @@ import com.gibson.util.DataEncryption;
 import java.util.ArrayList;
 
 public class RepoLibraryImpl implements RepoLibrary{
-    private Book book;
 
     private ArrayList<Book> data = new ArrayList<>();
     private ArrayList<User> userData = new ArrayList<>();
